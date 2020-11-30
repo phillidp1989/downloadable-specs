@@ -476,7 +476,7 @@ const programmeData = async (req, res, next) => {
       default:
         break;
     }
-  });
+  });  
 
   // Learning Outcomes
 
@@ -524,44 +524,50 @@ const programmeData = async (req, res, next) => {
     }
   });
 
+  
   if (
     newProg.years.year1.rules.compulsory.length > 0 ||
     newProg.years.year1.rules.optional.length > 0
   ) {
-    year1Exists = true;
+    newProg.year1Exists = true;
   }
 
   if (
     newProg.years.year2.rules.compulsory.length > 0 ||
     newProg.years.year2.rules.optional.length > 0
   ) {
-    year2Exists = true;
+    newProg.year2Exists = true;
   }
 
   if (
     newProg.years.year3.rules.compulsory.length > 0 ||
     newProg.years.year3.rules.optional.length > 0
   ) {
-    year3Exists = true;
+    newProg.year3Exists = true;
   }
 
   if (
     newProg.years.year4.rules.compulsory.length > 0 ||
     newProg.years.year4.rules.optional.length > 0
   ) {
-    year4Exists = true;
+    newProg.year4Exists = true;
   }
 
   if (
     newProg.years.year5.rules.compulsory.length > 0 ||
     newProg.years.year5.rules.optional.length > 0
   ) {
-    year5Exists = true;
+    newProg.year5Exists = true;
   }
 
   if (!newProg.deliveringInstitution2 === "") {
-    collaboration = true;
-    noCollab = false;
+    newProg.collaboration = true;
+    newProg.noCollab = false;
+  }
+  
+  if (!newProg.dept2 === "") {
+    newProg.partner = true;
+    newProg.noPartner = false;
   }
 
   res.status(200).json(newProg)
